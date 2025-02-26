@@ -60,3 +60,21 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
+/*
+for dependencies in gradle project add
+id("com.google.dagger.hilt.android") version "2.55" apply false
+
+in gradle modelue add:  this plugins
+    id ("kotlin-android")
+    id ("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
+
+and this dependencies:
+    implementation("com.google.dagger:hilt-android:2.55")
+    kapt("com.google.dagger:hilt-compiler:2.55")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.55")
+    androidTestAnnotationProcessor("com.google.dagger:hilt-compiler:2.55")
+    testImplementation("com.google.dagger:hilt-android-testing:2.55")
+    testAnnotationProcessor("com.google.dagger:hilt-compiler:2.55")
+
+ */

@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.firebaseapp.charlieandroidblog.hilt_example.domain.MyCustomObject
@@ -34,7 +35,6 @@ import javax.inject.Named
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
 
     @Inject
     @Named("myObject")
@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
             Hilt_exampleTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = myCustomObject.nombre,
+                        nombre = myCustomObject.nombre,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(nombre: String, modifier: Modifier = Modifier) {
     var name = remember { mutableStateOf("") }
     var password = remember { mutableStateOf("") }
     Column(
@@ -70,6 +70,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Spacer(modifier = Modifier.fillMaxWidth().height(150.dp))
+        Text(text = nombre,modifier.testTag("my_tag"))
+        Spacer(modifier = Modifier.fillMaxWidth().height(20.dp))
         TextField(
             modifier = Modifier.align(Alignment.CenterHorizontally),
             value = name.value,
